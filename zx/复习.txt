@@ -1,0 +1,22 @@
+使用node.js开发项目：
+
+const http=require("http");
+const url=require("url");
+const fs=require("fs");
+var app=http.createServer();
+app.listen(80)
+app.on("request",(req,res)=>{
+	var obj=url.parse(req.url,true);
+	var router=obj.pathname;//路由请求
+	var query=obj.query;//前端传到服务器的消息，对象保存
+
+	if(router=="/"){
+		fs.readFile("./路径",(err,buf)=>{
+			res.end(buf);
+		})
+	}else if(router="/getData"){
+		连接数据库
+	}
+})
+
+路由请求：三阶段全是

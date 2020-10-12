@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+html,body,header,footer,div,h1,h2,h3,h4,h5,h6,img,ul,li,p,span,i,a,b{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+a,i,h1,h2,h3,h4,h5,h6,b{
+    font-weight: normal;
+    font-style: normal;
+}
+img{
+    display: block;
+    font-size: 0;
+}
+a{
+    text-decoration: none;
+}
+.clear::after{
+    content: ".";
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+    display: block;
+}

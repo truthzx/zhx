@@ -1,0 +1,165 @@
+1、gulp（2） - webpack（8）对应的
+   自动化构建工具：项目经理玩的
+   作用：
+	1、复制
+	2、压缩（css/js/图片）：更小了
+	3、降级ES6为ES5，降级语法
+   为什么要打包：
+	上线过后，肯定使用的是处理过后(打包后)的代码，为了提升网站效率（以后我们一个项目其实会拥有两套代码：源代码和打包过的代码）
+
+   gulp是基于node.js编写的一个第三方模块（包、软件），需要在npm下载
+
+固定操作安装：1、必须先全局安装gulp（不安的话，gulp不是内部命令）
+		 npm i --global gulp
+	      2、再你的项目中局部安装
+		 npm i gulp
+	      3、在你的项目初始化gulp
+		 npm init
+		 注意：名字需要自己写，但是不能由大写，然后一路回车到底
+	      4、配置完成，开始编写属于你自己的gulpfile.js文件！！！必须是这个名字！
+
+   如何使用gulp：
+   1、先引入
+   API：
+	1、布置任务：
+	   gulp.task("任务名",()=>{
+		//任务要做什么操作
+	   })
+
+	   执行任务：
+	     对着项目目录右键打开cmd
+	     cmd里面输入gulp 任务名;
+	     如果没有写任务名，默认执行default任务名的操作
+
+	2、复习
+	   gulp.src(); -- 选中某个、某些源文件
+	   gulp.pipe(); -- 管道 -- 输送/插件操作
+	   gulp.dest(); -- 输送到哪里去？
+
+	   gulp.task("copyAll",()=>{
+		gulp.src("源文件路径")
+		    .pipe(gulp.dest("目标文件"))
+	   })
+
+	文件的路径写法：
+	  比如：
+	    想找到src下面的html下面的1.html：src/html/1.html
+	    想找到src下面的html下面的所有的html：src/html/*.html
+	    想找到src下面的html下面的所有的文件：src/html/*
+	    希望将src下面的所有内容都复制一份：src/*/*
+
+	恭喜你，已经学会了gulp
+
+上午的练习：
+1、安装好gulp的环境
+2、布置任务执行复制操作，压缩css
+3、多尝试一些路径的写法
+
+2、gulp插件
+   1、压缩css步骤：
+      gulp-cssmin插件
+      npm下载插件：npm i 包名
+      查看readme中的example小案例
+	var cssmin=require("gulp-cssmin");
+	gulp.task("copycssmin",()=>{
+		gulp.src("src/css/*.css")
+			.pipe(cssmin())
+			.pipe(gulp.dest("dist"))
+	})
+
+   2、压缩js步骤：
+      gulp-uglify插件
+      npm下载插件：npm i 包名
+	gulp.task("copyjsmin",()=>{
+		gulp.src("src/js/*.js")
+			.pipe(uglify())
+			.pipe(gulp.dest("dist"))
+	})
+
+   3、ES降级：gulp-babel;  目的： 1、语法变回ES5  2、能够压缩
+	  切记用的是babel6
+	 *安装：npm install --save-dev gulp-babel@7 babel-core babel-preset-env
+          用法：先转为ES5再压缩
+ *必须参考网页：https://www.cnblogs.com/yinluhui0229/p/5566390.html
+	  语法：
+		gulp.task("babeljs",()=>{
+			gulp.src("./src/*/*.js")
+			.pipe(babel())
+			.pipe(uglify())
+			.pipe(gulp.dest("./dist"))
+		})
+
+   4、图片压缩插件：
+	参考网页：https://blog.csdn.net/x550392236/article/details/78017346
+	下载：npm i gulp-tinypng-nokey
+
+   5、将sass和less编译为css：在我们写的sass的时候就已经自动编译为css了
+
+   6、可以将css整合：不推荐，因为每个页面都要引入那一个很大的
+      
+
+
+
+2、*git（9+）：分布式版本管理控制工具   -   svn（1-）：集中式版本管理控制工具
+   步骤：1、注册登陆github
+	 2、创建一个仓库
+	 3、安装了客户端的git：1、Git-2.18.0-64-bit.exe
+			       2、TortoiseGit-2.6.0.0-64bit.msi
+	 4、对着任意位置右键打开git bash here
+	 5、把github云端的仓库拉到本地：
+		git clone 仓库地址（项目经理会发给你）
+	 6、在仓库文件里面写你该写的项目
+	    
+	    在你的仓库文件夹里面右键git bash here
+
+	 7、添加：git add .
+	 8、提交：git commit -m"日志"  //必须写日志
+	 9、上传到云端：git push -v origin master （提交）
+        10、抓下来：git pull origin master （更新）
+
+        分支：合作
+	  1、查看分支 git branch
+	  2、创建分支 git branch 分支名
+	  3、切换分支 git checkout 分支名
+	  4、删除分支 git branch -d 分支名
+	  5、合并分支 git merge 分支名
+
+	注意：只有master能够推到云端（github）
+
+   好处：1、git代码托管平台
+	 2、无需固定的电脑，任何一台电脑，我只要有自己的github就可以访问到
+	 3、使用率更高
+
+   缺点：1、网速
+
+作业：
+  1、打包，本阶段所有的项目全部打包（咖啡，艾米学），并且传到你自己github上
+     懒得做的人：0、安装环境
+		 1、复制node_modules
+	         2、复制gulpfile.js
+		 3、改路径
+		 4、运行gulp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

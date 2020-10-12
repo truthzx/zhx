@@ -1,0 +1,1 @@
+@charset "utf-8";a,b,body,div,footer,h1,h2,h3,h4,h5,h6,header,html,i,img,li,p,span,ul{margin:0;padding:0}li,ul{list-style:none}a,b,h1,h2,h3,h4,h5,h6,i{font-weight:400;font-style:normal}img{display:block;font-size:0}a{text-decoration:none}.clear::after{content:".";height:0;clear:both;visibility:hidden;overflow:hidden;display:block}

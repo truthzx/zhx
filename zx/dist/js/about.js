@@ -1,0 +1,1 @@
+for(var inn=document.getElementById("inn"),lis=inn.firstElementChild.firstElementChild.children,i=0;i<lis.length;i++)lis[i].onclick=function(){for(var i=0;i<lis.length;i++)lis[i].className="";this.className="active";for(var e=parseInt(this.getAttribute("dy")),t=inn.children,n=1;n<t.length;n++)t[n].className="card";t[e+1].className="act"};
